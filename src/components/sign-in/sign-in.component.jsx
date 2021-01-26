@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import FormInput from "components/_common/form-input/form-input.component";
 import Button from "components/_common/button/button.component";
-import { signInWithGoogle } from 'firebase/firebase.utils';
+import {auth, signInWithGoogle} from 'firebase/firebase.utils';
 
 import './sign-in.styles.scss'
 
@@ -15,9 +15,19 @@ class SignIn extends Component {
 		}
 	}
 
-	handleSubmit = e => {
+	handleSubmit = async e => {
 		e.preventDefault();
-		this.setState({email: '', password: ''});
+
+		const { email, password } = this.state;
+
+		try {
+			await auth.signInWithEmailAndPassword(email, password);
+
+			this.setState({email: '', password: ''})
+
+		} catch(e) {
+			console.error(e);
+		}
 	}
 
 	handleChange = ({target: {value, name}}) => {
@@ -25,37 +35,39 @@ class SignIn extends Component {
 	}
 
 	render() {
+		const { email, password } = this.state;
+
 		return (
 			<div className='sign-in'>
-				<h2>I already have an account</h2>
+				<h2 className='sign-in__title'>I already have an account</h2>
 				<span>Sign in with your email and password</span>
 
-				<form onSubmit={this.handleSubmit}>
+				<form className='sign-in__form' onSubmit={this.handleSubmit}>
 					<FormInput
 						name='email'
-						type='text'
-						label='email'
-						value={this.state.email}
+						type='email'
+						label='Email'
+						value={email}
 						handleChange={this.handleChange}
 						required
 					/>
 					<FormInput
 						name='password'
 						type='password'
-						label='password'
+						label='Password'
 						required
-						value={this.state.password}
+						value={password}
 						handleChange={this.handleChange}
 					/>
+					<div className='buttons-group'>
+						<Button type='submit'>
+							Sign In
+						</Button>
+						<Button color='blue' onClick={signInWithGoogle}>
+							Sign In With Google
+						</Button>
+					</div>
 				</form>
-				<div className="buttons-group">
-					<Button type='submit'>
-						Sign In
-					</Button>
-					<Button type='submit' color='blue' onClick={signInWithGoogle}>
-						Sign In With Google
-					</Button>
-				</div>
 			</div>
 		);
 	}

@@ -12,7 +12,8 @@ const Button = ({children, color, ...props}) => {
 };
 
 Button.defaultProps = {
-	color: 'black'
+	color: 'black',
+	type: 'button'
 }
 
 Button.propTypes = {
