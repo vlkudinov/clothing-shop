@@ -21,6 +21,11 @@
     .option {
       padding: 10px 15px;
       cursor: pointer;
+      transition: font-weight .2s ease-in-out;
+
+      &:hover {
+        font-weight: bold;
+      }
     }
   }
 }

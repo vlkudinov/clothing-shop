@@ -1,15 +1,19 @@
 import React from 'react';
+import {useSelector, useDispatch, shallowEqual} from 'react-redux';
+import { toggleCartHidden } from 'redux/cart';
 import {Link} from 'react-router-dom';
-import {ReactComponent as Logo} from 'assets/crown.svg';
 import {auth} from 'firebase/firebase.utils';
-import {useSelector, shallowEqual} from 'react-redux'
+
+import {ReactComponent as Logo} from 'assets/crown.svg';
+import CartIcon from 'components/cart-icon/cart-icon.component';
+import CartDropdown from "components/cart-dropdown/cart-dropdown.component";
 
 import './header.styles.scss';
 
 const Header = () => {
-	const {currentUser} = useSelector(
-		(state) => state.user
-		, shallowEqual)
+	const {currentUser} = useSelector((state) => state.user, shallowEqual)
+	const {hidden} = useSelector((state) => state.cart, shallowEqual)
+	const dispatch = useDispatch();
 
 	return (
 		<div className='header'>
@@ -23,6 +27,8 @@ const Header = () => {
 					? <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>
 					: <Link className='option' to='/sign-in'>SIGN IN</Link>
 				}
+				<CartIcon handleClick={() => dispatch(toggleCartHidden())}/>
+				<CartDropdown hidden={hidden}/>
 			</div>
 		</div>)
 };
