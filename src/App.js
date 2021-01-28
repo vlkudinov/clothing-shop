@@ -6,7 +6,7 @@ import ShopPage from 'pages/shop/shop.component';
 import SignInSignUpPage from "pages/sign-in-sign-up/sign-in-sign-up.component";
 import {auth} from 'firebase/firebase.utils';
 import {createUserProfileDocument} from 'firebase/firebase.users.api';
-import {setCurrentUser} from 'redux/user';
+import {setCurrentUser} from 'redux/user/user.reducer';
 import {shallowEqual, useDispatch, useSelector} from 'react-redux'
 
 import './App.scss'

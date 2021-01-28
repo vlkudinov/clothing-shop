@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch, shallowEqual} from 'react-redux';
-import { toggleCartHidden } from 'redux/cart';
+import { toggleCartHidden } from 'redux/cart/cart.reducer';
 import {Link} from 'react-router-dom';
 import {auth} from 'firebase/firebase.utils';
 

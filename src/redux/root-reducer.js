@@ -1,5 +1,5 @@
-import user from './user';
-import cart from './cart'
+import user from './user/user.reducer';
+import cart from './cart/cart.reducer';
 
 const reducers = {
 	user,
