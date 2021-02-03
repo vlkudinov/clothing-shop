@@ -1,6 +1,7 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { createLogger }  from 'redux-logger'
-import reducers from './root-reducer';
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import {persistStore} from "redux-persist";
+import {createLogger} from 'redux-logger'
+import reducer from './root-reducer';
 
 const DEV = process.env.NODE_ENV !== 'production';
 
@@ -10,12 +11,14 @@ const logger = createLogger({
 
 const defaultMiddleware = getDefaultMiddleware({
 	immutableCheck: true,
-	serializableCheck: true,
+	serializableCheck: false,
 	thunk: true
 });
 
 export const store = configureStore({
-	reducer: {...reducers},
+	reducer,
 	middleware: [...defaultMiddleware, logger],
-	devTools: DEV,
+	devTools: DEV
 });
+
+export const persistor = persistStore(store);
