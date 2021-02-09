@@ -1,9 +1,9 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const directorySlice = createSlice({
 	name: 'directory',
 	initialState: {
-		sections : [
+		sections: [
 			{
 				title: 'hats',
 				imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
@@ -37,7 +37,7 @@ const directorySlice = createSlice({
 				linkUrl: 'shop/mens'
 			}
 		]
-	},
+	}
 });
 
 export default directorySlice.reducer;

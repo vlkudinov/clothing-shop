@@ -1,24 +1,21 @@
 import React from 'react';
+import { ButtonContainer } from './button.styles';
 import PropTypes from 'prop-types';
 
-import './button.styles.scss'
-
-const Button = ({children, color, ...props}) => {
+const Button = ({ children, ...props }) => {
 	return (
-		<button className={`button button_${color}`} {...props}>
-			<span className='button__title'>{children}</span>
-		</button>
+		<ButtonContainer {...props}>
+			{children}
+		</ButtonContainer>
 	);
 };
 
 Button.defaultProps = {
-	color: 'black',
-	type: 'button'
-}
+	color: 'black'
+};
 
 Button.propTypes = {
-	children: PropTypes.string.isRequired,
-	type: PropTypes.string,
+	children: PropTypes.string.isRequired
 };
 
 export default Button;

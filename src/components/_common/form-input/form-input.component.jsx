@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './form-input.styles.scss'
+import { FormInputContainer, GroupContainer, FormInputLabel } from './form-input.styles';
 
-const FormInput = ({handleChange, label, ...otherProps}) => (
-	<div className='group'>
-		<input
+const FormInput = ({ handleChange, label, ...otherProps }) => (
+	<GroupContainer>
+		<FormInputContainer
 			className='form-input'
 			onChange={e => handleChange(e)}
 			{...otherProps}
 		/>
-		{label && <label className={`${otherProps.value.length ? 'shrink' : ''} form-input-label`}>{label}</label>}
-	</div>
+		{label && <FormInputLabel>{label}</FormInputLabel>}
+	</GroupContainer>
 );
 
 FormInput.defaultProps = {
@@ -21,6 +21,6 @@ FormInput.defaultProps = {
 	handleChange: PropTypes.func.isRequired,
 	label: PropTypes.string,
 	required: PropTypes.bool
-}
+};
 
 export default FormInput;

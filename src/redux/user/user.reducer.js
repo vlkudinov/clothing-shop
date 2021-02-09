@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const movieSlice = createSlice({
 	name: 'user',
@@ -11,7 +11,7 @@ const movieSlice = createSlice({
 		setCurrentUser: (state, action) => {
 			state.currentUser = action.payload;
 		}
-	},
+	}
 });
 
 export const { setCurrentUser } = movieSlice.actions;

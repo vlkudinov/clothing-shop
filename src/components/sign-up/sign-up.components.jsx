@@ -1,14 +1,12 @@
-import React, {Component} from 'react';
-import FormInput from "components/_common/form-input/form-input.component";
-import Button from "components/_common/button/button.component";
-
+import React, { Component } from 'react';
+import FormInput from 'components/_common/form-input/form-input.component';
+import Button from 'components/_common/button/button.component';
 import { auth } from 'firebase/firebase.utils';
-import { createUserProfileDocument} from "firebase/firebase.users.api";
-
-import './sign-up.styles.scss';
+import { createUserProfileDocument } from 'firebase/firebase.users.api';
+import { SignUpContainer, SignUpTitle } from './sign-up.styles';
 
 class SignUp extends Component {
-	constructor(props) {
+	constructor(props){
 		super(props);
 
 		this.state = {
@@ -16,47 +14,47 @@ class SignUp extends Component {
 			email: '',
 			password: '',
 			confirmPassword: ''
-		}
+		};
 	}
 
 	handleSubmit = async e => {
 		e.preventDefault();
-		const {displayName, email, password, confirmPassword } = this.state;
+		const { displayName, email, password, confirmPassword } = this.state;
 
 		if (password !== confirmPassword) {
-			alert("passwords don't match");
+			alert('passwords don\'t match');
 			return;
 		}
 
 		try {
 			const { user } = await auth.createUserWithEmailAndPassword(email, password);
-			await createUserProfileDocument(user, {displayName});
+			await createUserProfileDocument(user, { displayName });
 
 			this.setState({
 				displayName: '',
 				email: '',
 				password: '',
 				confirmPassword: ''
-			})
+			});
 
-		} catch(e) {
+		} catch (e) {
 			console.error(e);
 		}
-	}
+	};
 
-	handleChange = ({target: {value, name}}) => {
-		this.setState({[name]: value})
-	}
+	handleChange = ({ target: { value, name } }) => {
+		this.setState({ [name]: value });
+	};
 
-	render() {
-		const {displayName, email, password, confirmPassword } = this.state;
+	render(){
+		const { displayName, email, password, confirmPassword } = this.state;
 
 		return (
-			<div className='sign-up'>
-				<h2 className='sign-up__title'>I do not have account</h2>
+			<SignUpContainer>
+				<SignUpTitle>I do not have account</SignUpTitle>
 				<span>Sign up with your email and password</span>
 
-				<form className='sign-up__form' onSubmit={this.handleSubmit}>
+				<form onSubmit={this.handleSubmit}>
 					<FormInput
 						name='displayName'
 						type='text'
@@ -93,7 +91,7 @@ class SignUp extends Component {
 						Sign Up
 					</Button>
 				</form>
-			</div>
+			</SignUpContainer>
 		);
 	}
 }

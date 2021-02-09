@@ -1,4 +1,4 @@
-import {firestore} from "./firebase.utils";
+import { firestore } from './firebase.utils';
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
 	if (!userAuth) return;
@@ -7,7 +7,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 	const snapshot = await userRef.get();
 
 	if (!snapshot.exists) {
-		const {displayName, email, photoURL} = userAuth;
+		const { displayName, email, photoURL } = userAuth;
 		const creatAt = new Date();
 
 		try {
@@ -17,11 +17,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 				photoURL,
 				creatAt,
 				...additionalData
-			})
+			});
 		} catch (e) {
-			console.log('error creating user', e.message)
+			console.log('error creating user', e.message);
 		}
 	}
 
 	return userRef;
-}
+};

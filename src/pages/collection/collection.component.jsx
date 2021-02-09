@@ -1,28 +1,32 @@
 import React from 'react';
-import {useSelector, shallowEqual} from 'react-redux';
-import {selectCollection} from 'redux/shop/shop.selectors';
+import { useSelector, shallowEqual } from 'react-redux';
+import { selectCollection } from 'redux/shop/shop.selectors';
 import CollectionItem from 'components/collection-item/collection-item.component';
-import './collection.styles.scss';
+import {
+	CollectionPageContainer,
+	CollectionTitle,
+	CollectionItemsContainer
+} from './collection.styles';
 
-const Collection = ({match}) => {
+const Collection = ({ match }) => {
 	const collection = useSelector(selectCollection(match.params.collectionId), shallowEqual);
 
 	if (!collection) {
 		return null;
 	}
 
-	const {title, items} = collection
+	const { title, items } = collection;
 
 	return (
-		<div className='collection-page'>
-			<h2 className='collection-page__title'>{title}</h2>
-			<div className="collection-page__items">
+		<CollectionPageContainer>
+			<CollectionTitle>{title}</CollectionTitle>
+			<CollectionItemsContainer className="collection-page__items">
 				{items.map((item) =>
 					<CollectionItem key={item.id} item={item}/>
 				)}
-			</div>
-		</div>
-	)
+			</CollectionItemsContainer>
+		</CollectionPageContainer>
+	);
 
 };
 

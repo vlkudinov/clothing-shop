@@ -1,6 +1,6 @@
-import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
-import {persistStore} from "redux-persist";
-import {createLogger} from 'redux-logger'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { persistStore } from 'redux-persist';
+import { createLogger } from 'redux-logger';
 import reducer from './root-reducer';
 
 const DEV = process.env.NODE_ENV !== 'production';
@@ -17,7 +17,7 @@ const defaultMiddleware = getDefaultMiddleware({
 
 export const store = configureStore({
 	reducer,
-	middleware: [...defaultMiddleware, logger],
+	middleware: [ ...defaultMiddleware, logger ],
 	devTools: DEV
 });
 

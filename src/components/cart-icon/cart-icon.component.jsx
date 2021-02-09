@@ -1,19 +1,17 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
-import {selectCartItemsCount} from 'redux/cart/cart.selectors'
-import {ReactComponent as ShoppingBagIcon} from 'assets/shopping-bag.svg';
+import { useSelector } from 'react-redux';
+import { selectCartItemsCount } from 'redux/cart/cart.selectors';
+import { CartIconContainer, Icon, ItemCountContainer } from './cart-icon.styles';
 
-import './cart-icon.styles.scss'
-
-const CartIcon = ({handleClick}) => {
-	const cartItemsCount = useSelector(selectCartItemsCount)
+const CartIcon = ({ handleClick }) => {
+	const cartItemsCount = useSelector(selectCartItemsCount);
 
 	return (
-		<div className='cart-icon' onClick={handleClick}>
-			<ShoppingBagIcon className='cart-icon__svg'/>
-			<span className="cart-icon__item-count">{cartItemsCount}</span>
-		</div>
-	)
+		<CartIconContainer onClick={handleClick}>
+			<Icon/>
+			<ItemCountContainer>{cartItemsCount}</ItemCountContainer>
+		</CartIconContainer>
+	);
 };
 
 export default CartIcon;

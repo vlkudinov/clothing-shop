@@ -1,25 +1,30 @@
 import React from 'react';
-import './checkout-item.styles.scss';
+import {
+	CheckoutItemContainer,
+	ImageContainer,
+	TextContainer,
+	QuantityContainer,
+	RemoveButtonContainer
+} from './checkout-item.styles';
 
-const CheckoutItem = ({item, addItem, removeItem, clearItemFromCart}) => {
-	const {name, quantity, price, imageUrl} = item;
+const CheckoutItem = ({ item, addItem, removeItem, clearItemFromCart }) => {
+	const { name, quantity, price, imageUrl } = item;
 
 	return (
-		<div className='checkout-item'>
-			<div className="checkout-item__image-container">
+		<CheckoutItemContainer>
+			<ImageContainer>
 				<img src={imageUrl} alt='item'/>
-			</div>
-			<span className='checkout-item__name'>{name}</span>
-			<div className='checkout-item__quantity quantity'>
-				<div className='quantity__arrow' onClick={removeItem}>&#10094;</div>
-				<span className='quantity__value'>{quantity}</span>
-				<div className='quantity__arrow' onClick={addItem}>&#10095;</div>
-
-			</div>
-			<span className='checkout-item__price'>${price}</span>
-			<div className='checkout-item__remove-button' onClick={clearItemFromCart}>&#10005;</div>
-		</div>
-	)
+			</ImageContainer>
+			<TextContainer>{name}</TextContainer>
+			<QuantityContainer>
+				<div onClick={removeItem}>&#10094;</div>
+				<span>{quantity}</span>
+				<div onClick={addItem}>&#10095;</div>
+			</QuantityContainer>
+			<TextContainer>${price}</TextContainer>
+			<RemoveButtonContainer onClick={clearItemFromCart}>&#10005;</RemoveButtonContainer>
+		</CheckoutItemContainer>
+	);
 };
 
 export default CheckoutItem;
