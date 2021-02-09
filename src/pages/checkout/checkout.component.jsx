@@ -1,8 +1,10 @@
 import React from 'react';
 import {shallowEqual, useDispatch, useSelector} from 'react-redux';
-import {selectTotalCount, selectCartItems} from 'redux/cart/cart.selectors';
+import {selectTotalCount} from 'redux/cart/cart.selectors';
 import CheckoutItem from 'components/checkout-item/checkout-item.component';
 import {addItem, removeItem, clearItemFromCart} from 'redux/cart/cart.reducer';
+import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
+
 import './checkout.styles.scss';
 
 const CheckoutPage = ({headerItems}) => {
@@ -30,6 +32,12 @@ const CheckoutPage = ({headerItems}) => {
 				/>
 			)}
 			<div className="total">TOTAL ${total}</div>
+			<StripeCheckoutButton price={total}/>
+			<div className="test-warning">
+				*Please use following test credit card for payments
+				<br/>
+				4242 4242 4242 4242 /CVC - Any 3 digits /Date - any future date
+			</div>
 		</div>
 	);
 }
