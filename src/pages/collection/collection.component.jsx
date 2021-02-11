@@ -8,7 +8,7 @@ import {
 	CollectionItemsContainer
 } from './collection.styles';
 
-const Collection = ({ match }) => {
+const CollectionPage = ({ match }) => {
 	const collection = useSelector(selectCollection(match.params.collectionId), shallowEqual);
 
 	if (!collection) {
@@ -20,14 +20,13 @@ const Collection = ({ match }) => {
 	return (
 		<CollectionPageContainer>
 			<CollectionTitle>{title}</CollectionTitle>
-			<CollectionItemsContainer className="collection-page__items">
+			<CollectionItemsContainer>
 				{items.map((item) =>
 					<CollectionItem key={item.id} item={item}/>
 				)}
 			</CollectionItemsContainer>
 		</CollectionPageContainer>
 	);
-
 };
 
-export default Collection;
+export default CollectionPage;
