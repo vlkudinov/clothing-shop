@@ -1,17 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchCollections } from './shop.asyncThunks';
 
 const shopSlice = createSlice({
 	name: 'shop',
 	initialState: {
-		collections: []
+		collections: [],
+		loading: false,
+		error: null
 	},
-	reducers: {
-		setCollectionsData: (state, action) => {
+	reducers: {},
+	extraReducers: {
+		[fetchCollections.pending]: (state, action) => {
+			state.loading = true;
+		},
+		[fetchCollections.fulfilled]: (state, action) => {
 			state.collections = action.payload;
+			state.loading = false;
+		},
+		[fetchCollections.rejected]: (state, action) => {
+			state.error = action.payload.error;
+			state.loading = false;
 		}
 	}
 });
-
-export const { setCollectionsData } = shopSlice.actions;
 
 export default shopSlice.reducer;
