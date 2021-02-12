@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { signOutStart } from 'redux/user/user.reducer';
 import { toggleCartHidden } from 'redux/cart/cart.reducer';
-import { auth } from 'firebase/firebase.utils';
 import { ReactComponent as Logo } from 'assets/crown.svg';
 import CartIcon from 'components/cart-icon/cart-icon.component';
 import CartDropdown from 'components/cart-dropdown/cart-dropdown.component';
@@ -22,7 +22,7 @@ const Header = () => {
 				<OptionLink to='/shop'>SHOP</OptionLink>
 				<OptionLink to='/contact'>CONTACT</OptionLink>
 				{currentUser
-					? <OptionLink as='div' onClick={() => auth.signOut()}>SIGN OUT</OptionLink>
+					? <OptionLink as='div' onClick={() => dispatch(signOutStart())}>SIGN OUT</OptionLink>
 					: <OptionLink to='/sign-in'>SIGN IN</OptionLink>
 				}
 				<CartIcon handleClick={() => dispatch(toggleCartHidden())}/>

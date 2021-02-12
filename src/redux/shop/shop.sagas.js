@@ -1,4 +1,4 @@
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put, all, call } from 'redux-saga/effects';
 import { fetchCollectionsStart, fetchCollectionsSuccess, fetchCollectionsError } from './shop.reducer';
 import * as shopAPI from '../../firebase/firebase.shop.api';
 
@@ -12,6 +12,10 @@ function* fetchCollectionAsync(){
 	}
 }
 
-export function* fetchCollectionStart(){
+export function* onFetchCollection(){
 	yield takeEvery(fetchCollectionsStart, fetchCollectionAsync);
+}
+
+export function* shopSaga(){
+	yield all([ call(onFetchCollection) ]);
 }

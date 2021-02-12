@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import { FormInputContainer, GroupContainer, FormInputLabel } from './form-input.styles';
 
-const FormInput = ({ handleChange, label, ...otherProps }) => (
+const FormInput = ({ handleChange, label, ...props }) => (
 	<GroupContainer>
 		<FormInputContainer
 			className='form-input'
 			onChange={e => handleChange(e)}
-			{...otherProps}
+			{...props}
 		/>
-		{label && <FormInputLabel>{label}</FormInputLabel>}
+		{label && <FormInputLabel className={props.value.length ? 'shrink' : ''}>{label}</FormInputLabel>}
 	</GroupContainer>
 );
 
