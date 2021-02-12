@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import CollectionPageContainer from 'pages/collection/collection.container';
-import CollectionOverviewContainer from 'components/collections-overview/collection-overview.container'
+import CollectionOverviewContainer from 'components/collections-overview/collection-overview.container';
 import { useDispatch } from 'react-redux';
-import { fetchCollections } from 'redux/shop/shop.asyncThunks';
+import { fetchCollectionsStart } from 'redux/shop/shop.reducer';
 
 const ShopPage = ({ match }) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchCollections());
+		dispatch(fetchCollectionsStart());
 	}, [ dispatch ]);
 
 	return (

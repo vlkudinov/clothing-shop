@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCollections } from './shop.asyncThunks';
 
 const shopSlice = createSlice({
 	name: 'shop',
@@ -8,20 +7,20 @@ const shopSlice = createSlice({
 		loading: false,
 		error: null
 	},
-	reducers: {},
-	extraReducers: {
-		[fetchCollections.pending]: (state, action) => {
+	reducers: {
+		fetchCollectionsStart: (state, action) => {
 			state.loading = true;
 		},
-		[fetchCollections.fulfilled]: (state, action) => {
+		fetchCollectionsSuccess: (state, action) => {
 			state.collections = action.payload;
 			state.loading = false;
 		},
-		[fetchCollections.rejected]: (state, action) => {
-			state.error = action.payload.error;
+		fetchCollectionsError: (state, action) => {
+			state.error = action.payload;
 			state.loading = false;
 		}
 	}
 });
+export const { fetchCollectionsStart, fetchCollectionsSuccess, fetchCollectionsError } = shopSlice.actions;
 
 export default shopSlice.reducer;
