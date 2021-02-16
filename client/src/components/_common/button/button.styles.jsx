@@ -24,9 +24,25 @@ const blueButtonStyles = css`
   }
 `;
 
+const stripeButtonStyles = css`
+	background-color: #5469d4;
+  border: none;
+  color: white;
+  margin-right: auto;
+
+  &:hover {
+    background-color: #364696;
+  }
+  &:disabled {
+  	background-color: #a4a5bc;
+  }
+`;
+
+
 const colorMapping = {
 	black: blackButtonStyles,
-	blue: blueButtonStyles
+	blue: blueButtonStyles,
+	stripe: stripeButtonStyles
 };
 
 export const ButtonContainer = styled.button`

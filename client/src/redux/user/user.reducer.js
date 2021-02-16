@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const movieSlice = createSlice({
+const userSlice = createSlice({
 	name: 'user',
 	initialState: {
 		currentUser: null,
@@ -13,8 +13,6 @@ const movieSlice = createSlice({
 		signUpFailure: (state, action) => {
 			state.error = action.payload;
 		},
-		signUpFailStart: () => {},
-
 		googleSignInStart: () => {},
 		emailSignInStart: (state, action) => {},
 		signInSuccess: (state, action) => {
@@ -48,6 +46,6 @@ export const {
 	signOutSuccess,
 	signOutFailure,
 	checkUserSession
-} = movieSlice.actions;
+} = userSlice.actions;
 
-export default movieSlice.reducer;
+export default userSlice.reducer;
