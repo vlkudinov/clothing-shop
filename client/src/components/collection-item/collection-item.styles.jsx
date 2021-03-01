@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import Button from 'components/_common/button/button.component';
 
 export const CollectionItemContainer = styled.li`
-  width: 22vw;
   display: flex;
   flex-direction: column;
   height: 350px;
   align-items: center;
   position: relative;
+  margin-right: 10px;
+  
   &:hover {
     .image {
       opacity: 0.8;
@@ -17,6 +18,20 @@ export const CollectionItemContainer = styled.li`
       display: flex;
     }
   }
+  
+  @media screen and (max-width: 800px) {
+  	margin: 0;
+  	
+  	&:hover {
+    	.image {
+      	opacity: unset;
+    	}
+    	
+    	button {
+      	opacity: unset;
+    	}
+  	}
+  }
 `;
 
 export const AddButton = styled(Button)`
@@ -25,6 +40,13 @@ export const AddButton = styled(Button)`
   position: absolute;
   top: 210px;
   display: none;
+  
+	@media screen and (max-width: 800px) {
+		display: block;
+		opacity: .9;
+		min-width: unset;
+		padding: 0 10px;
+	}
 `;
 
 export const BackgroundImage = styled.div`
@@ -32,7 +54,7 @@ export const BackgroundImage = styled.div`
   height: 95%;
   background-size: cover;
   background-position: center;
-  margin-bottom: 0 10px 10px 5px;
+  margin-bottom: 10px;
   background-color: gray;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;

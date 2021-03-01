@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const CheckoutFormContainer = styled.form`
   animation: fade 200ms ease-out;
-  width: 380px;
-  margin-top: 40px;
+  width: 100%;
+  max-width: 800px;
   position: relative;
 `;
 

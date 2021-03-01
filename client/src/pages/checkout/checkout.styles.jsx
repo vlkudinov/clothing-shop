@@ -7,10 +7,16 @@ export const CheckoutPageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 50px auto 0;
+  
   button {
     margin-left: auto;
     margin-top: 50px;
   }
+  
+  @media screen and (max-width: 800px) {
+  	width: auto;
+  }
+  
 `;
 
 export const CheckoutHeaderContainer = styled.div`
@@ -29,10 +35,11 @@ export const HeaderBlockContainer = styled.div`
   }
 `;
 
-export const TotalContainer = styled.div`
-  margin-top: 30px;
-  margin-left: auto;
-  font-size: 36px;
+export const CheckoutTitle = styled.h2`
+  margin-top: 80px;
+  text-align: center;
+  font-size: 28px;
+  text-transform: uppercase;
 `;
 
 export const WarningContainer = styled.div`

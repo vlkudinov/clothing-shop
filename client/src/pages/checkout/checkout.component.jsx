@@ -10,6 +10,7 @@ import CheckoutResult from '../../components/checkout-result/checkout-result.com
 import {
 	CheckoutPageContainer,
 	CheckoutHeaderContainer,
+	CheckoutTitle,
 	HeaderBlockContainer,
 	WarningContainer
 } from './checkout.styles';
@@ -50,6 +51,7 @@ const CheckoutPage = ({ headerItems }) => {
 					removeItem={() => dispatch(removeItem(item))}
 				/>
 			)}
+			<CheckoutTitle>Payment Information</CheckoutTitle>
 			<Elements stripe={promise} options={ELEMENTS_OPTIONS}>
 				{paymentIntent ? <CheckoutResult paymentIntent={paymentIntent}/> : <CheckoutForm/>}
 			</Elements>
