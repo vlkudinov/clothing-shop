@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import CartItem from 'components/cart-item/cart-item.component';
-import Button from 'components/_common/button/button.component';
+import Button from 'components/button/button.component';
 import { toggleCartHidden } from 'redux/cart/cart.reducer';
 import { CartDropdownContainer, CartItems, EmptyMessage } from 'components/cart-dropdown/cart-dropdown.styles';
 

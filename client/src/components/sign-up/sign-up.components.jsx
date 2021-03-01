@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import FormInput from 'components/_common/form-input/form-input.component';
-import Button from 'components/_common/button/button.component';
+import FormInput from 'components/form-input/form-input.component';
+import Button from 'components/button/button.component';
 import { signUpStart } from 'redux/user/user.reducer';
 import { SignUpContainer, SignUpTitle } from './sign-up.styles';
 

@@ -4,8 +4,8 @@ import { selectTotalCount } from 'redux/cart/cart.selectors';
 import { paymentConfirmStart } from 'redux/billing/billing.reducer';
 import { ReactComponent as CrossIconSVG } from 'assets/cross.svg';
 import options from './options';
-import FormInput from 'components/_common/form-input/form-input.component';
-import Button from 'components/_common/button/button.component';
+import FormInput from 'components/form-input/form-input.component';
+import Button from 'components/button/button.component';
 import {
 	CardElement,
 	useStripe,
