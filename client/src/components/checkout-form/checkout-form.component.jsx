@@ -94,7 +94,7 @@ const CheckoutForm = () => {
 			<Button
 				type="submit"
 				color="stripe"
-				disabled={processing || !cardComplete}>
+				disabled={processing || !cardComplete || !totalCount}>
 				{`Pay $${totalCount}`}
 			</Button>
 		</CheckoutFormContainer>
